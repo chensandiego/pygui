@@ -1,5 +1,6 @@
 import tkinter as tk 
 from tkinter import ttk 
+from tkinter import scrolledtext
 
 win = tk.Tk()
 win.title("Python GUI")
@@ -53,5 +54,27 @@ check3 = tk.Checkbutton(win,text="Checked",variable=chVarEn)
 
 check3.select()
 check3.grid(column=2,row=4,sticky=tk.W)
+
+#radio
+
+colors =["Blue","Gold","Red"]
+
+radVar = tk.IntVar()
+radVar.set(99)
+def radCall():
+	radSel=radVar.get()
+	win.configure(background=colors[radSel])
+ 
+for col in range(3):
+	curRad = 'rad' + str(col)
+	curRad = tk.Radiobutton(win,text=colors[col],variable=radVar,value=col,command=radCall)
+	curRad.grid(column=col,row=5,sticky=tk.W)
+
+
+#scolled text
+scrolW = 30
+scrolH = 3
+scr = scrolledtext.ScrolledText(win,width=scrolW,height=scrolH,wrap=tk.WORD)
+scr.grid(column=0,columnspan=3)
 
 win.mainloop()
