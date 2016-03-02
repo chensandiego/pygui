@@ -3,14 +3,20 @@ from tkinter import ttk
 
 win = tk.Tk()
 win.title("Python GUI")
-aLabel=ttk.Label(win,text="A label")
+aLabel=ttk.Label(win,text="Name")
 aLabel.grid(column=0,row=0)
 
 
 def clickMe():
-	action.configure(text="**I have been clicked**")
-	aLabel.configure(foreground='red')
+	action.configure(text='Hello ' + name.get())
+
 	
-action =ttk.Button(win,text="Click me",command=clickMe)
-action.grid(column=1,row=0)
+
+ttk.Label(win,text="Enter a name: ").grid(column=0,row=0)
+
+action = ttk.Button(win, text="Click Me!", command=clickMe)   
+action.grid(column=1,row=1)
+name = tk.StringVar()
+nameEntered=ttk.Entry(win,width=12,textvariable=name)
+nameEntered.grid(column=0,row=1)
 win.mainloop()
